@@ -1,5 +1,6 @@
 # Use official Python runtime as a base image
 FROM python:3.11.9
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
