@@ -93,7 +93,7 @@ def perform_topic_modeling(df, num_topics):
 st.title("Topic Modeling & Word Cloud Generation")
 
 # File upload section
-uploaded_file = st.file_uploader("Upload your Excel file", type="xlsx")
+uploaded_file = st.file_uploader("Upload your Excel file", type="csv")
 
 if uploaded_file:
     # Read the uploaded file
