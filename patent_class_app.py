@@ -97,7 +97,7 @@ uploaded_file = st.file_uploader("Upload your Excel file", type="csv")
 
 if uploaded_file:
     # Read the uploaded file
-    df = pd.read_excel(uploaded_file)
+    df = pd.read_csv(uploaded_file)
 
     # Check the first few rows to understand the structure
     st.write(df.head())
