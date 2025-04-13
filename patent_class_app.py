@@ -1,10 +1,3 @@
-# Basic topic modelling for Patents
-
-# 
-# VM + Load the code on it + Docker Image -> Push on Cloud RUn 
-# poetry ?
-# 
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -93,7 +86,7 @@ def perform_topic_modeling(df, num_topics):
 st.title("Topic Modeling & Word Cloud Generation")
 
 # File upload section
-uploaded_file = st.file_uploader("Upload your Excel file", type="csv")
+uploaded_file = st.file_uploader("Upload your CSV file", type="csv")
 
 if uploaded_file:
     # Read the uploaded file
@@ -101,11 +94,11 @@ if uploaded_file:
 
     # Check the first few rows to understand the structure
     st.write(df.head())
-    
+
     # Select number of topics for LDA
-    num_topics = st.slider("Select number of topics", min_value=2, max_value=10, value=3)
-    
-    # Perform topic modeling and get word clouds for each topic
+    num_topics = st.slider("Select number of topics and wait for the model to generate", min_value=2, max_value=10, value=2, step=1)
+
+    # Perform topic modeling and get word clouds for each topic automatically
     wordclouds, df = perform_topic_modeling(df, num_topics)
     
     # Create a list of topic labels
@@ -124,8 +117,8 @@ if uploaded_file:
     # Filter patents belonging to the selected topic
     patents_in_topic = df[df['Topic'] == topic_index]
     
-    # Display the patents in the selected topic
+    # Display the patents in the selected topic (including 'Patent Number', 'Title', and 'Abstract')
     st.subheader(f"Patents in {selected_topic}")
-    st.write(patents_in_topic[['Patent Number', 'Title']])
+    st.write(patents_in_topic[['Patent Number', 'Title', 'Abstract']])
 
 # End of Code
